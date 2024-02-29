@@ -1,10 +1,11 @@
 "use client"
 
 import { ChangeEvent } from "react"
-
 import FilterRadioGroup from "@modules/common/components/filter-radio-group"
 
-export type SortOptions = "price_asc" | "price_desc" | "created_at"
+
+export type SortOptions = "price_asc" | "price_desc" | "created_at" 
+
 
 type SortProductsProps = {
   sortBy: SortOptions
@@ -39,7 +40,11 @@ const SortProducts = ({ sortBy, setQueryParams }: SortProductsProps) => {
       value={sortBy}
       handleChange={handleChange}
     />
+  
+    
   )
 }
 
 export default SortProducts
+
+

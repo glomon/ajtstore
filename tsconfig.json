@@ -44,5 +44,6 @@
     "cypress-coverage",
     "coverage",
     "jest-coverage"
-  ]
+  ],
+
 }

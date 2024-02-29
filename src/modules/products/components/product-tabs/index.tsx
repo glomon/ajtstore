@@ -5,6 +5,8 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import Back from "@modules/common/icons/back"
 import FastDelivery from "@modules/common/icons/fast-delivery"
 import Refresh from "@modules/common/icons/refresh"
+import { Badge } from "@medusajs/ui"
+
 
 import Accordion from "./accordion"
 
@@ -18,10 +20,10 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
       label: "Product Information",
       component: <ProductInfoTab product={product} />,
     },
-    {
+   /*  {
       label: "Shipping & Returns",
       component: <ShippingInfoTab />,
-    },
+    }, */
   ]
 
   return (
@@ -51,25 +53,25 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
             <span className="font-semibold">Material</span>
             <p>{product.material ? product.material : "-"}</p>
           </div>
-          <div>
+           <div>
             <span className="font-semibold">Country of origin</span>
             <p>{product.origin_country ? product.origin_country : "-"}</p>
-          </div>
+          </div> 
           <div>
-            <span className="font-semibold">Type</span>
-            <p>{product.type ? product.type.value : "-"}</p>
-          </div>
+           {/*  <span className="font-semibold">Type</span>
+            <p>{product.type ? product.type.value : "-"}</p> */}
+          </div> 
         </div>
         <div className="flex flex-col gap-y-4">
-          <div>
+           <div>
             <span className="font-semibold">Weight</span>
             <p>{product.weight ? `${product.weight} g` : "-"}</p>
-          </div>
+          </div>  
           <div>
-            <span className="font-semibold">Dimensions</span>
+            <span className="font-semibold">Dimensions (w, h)</span>
             <p>
-              {product.length && product.width && product.height
-                ? `${product.length}L x ${product.width}W x ${product.height}H`
+              {product.width && product.height
+                ? `${product.width} x ${product.height}px`
                 : "-"}
             </p>
           </div>
@@ -77,7 +79,9 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
       </div>
       {product.tags?.length ? (
         <div>
-          <span className="font-semibold">Tags</span>
+          <span className="font-semibold">Tags</span><br></br>
+          {product.tags.map(tags => <Badge size="small" className="px-2  space-x-2 m-1" key={tags.value}>{tags.value}</Badge> )}
+         
         </div>
       ) : null}
     </div>
